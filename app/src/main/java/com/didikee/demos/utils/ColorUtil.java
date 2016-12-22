@@ -1,4 +1,4 @@
-package com.didikee.demos.dao.HHRecyclerView;
+package com.didikee.demos.utils;
 
 import java.util.Random;
 

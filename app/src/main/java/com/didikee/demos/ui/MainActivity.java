@@ -1,4 +1,4 @@
-package com.didikee.demos;
+package com.didikee.demos.ui;
 
 import android.content.Intent;
 import android.util.Pair;
@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.didikee.demos.R;
 import com.didikee.demos.ui.act.AndroidFilePathActivity;
 import com.didikee.demos.ui.act.DownLoadActivity;
 import com.didikee.demos.ui.act.FileChooserActivity;
@@ -19,6 +20,8 @@ import com.didikee.demos.ui.act.MiGuoActivity;
 import com.didikee.demos.ui.act.SanJiaoActivity;
 import com.didikee.demos.ui.act.WebTestActivity;
 import com.didikee.demos.ui.act.YaoYiYaoActivity;
+import com.didikee.demos.ui.act.viewActivity.GooglePlayTabRevealActivity;
+import com.didikee.demos.ui.act.viewActivity.RevealEffectActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,6 +100,8 @@ public class MainActivity extends PermissionsHelperActivity {
         models.add(new Pair<String, Class>("js", WebTestActivity.class));
         models.add(new Pair<String, Class>("miguo", MiGuoActivity.class));
         models.add(new Pair<String, Class>("GooglePlay 水平滚动 item一半判断", GooglePlayH2RVActivity.class));
+        models.add(new Pair<String, Class>("View 揭示动画", RevealEffectActivity.class));
+        models.add(new Pair<String, Class>("View 揭示动画-Google Play", GooglePlayTabRevealActivity.class));
 
 
 

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.didikee.demos.R;
+import com.didikee.demos.utils.ColorUtil;
 
 /**
  * Created by didik 

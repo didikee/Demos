@@ -131,11 +131,6 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return result;
     }
 
-    //    @Override
-//    public void onBindViewHolder(ViewHolderGoods holder, int position) {
-//        holder.tv_name.setText(strings.get(position));
-//    }
-
     @Override
     public int getItemCount() {
         return strings==null ? 0 :strings.size();

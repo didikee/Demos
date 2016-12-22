@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.didikee.demos.R;
 import com.didikee.demos.dao.miguoMain.RVAdapter;
@@ -20,6 +21,7 @@ public class MiGuoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mi_guo);
 
+        Toast.makeText(this, "sdkksd", Toast.LENGTH_SHORT).show();
 
         RV = ((RecyclerView) findViewById(R.id.rv));
 
