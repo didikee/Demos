@@ -42,6 +42,8 @@
         </activity>
         <activity android:name=".ui.act.viewActivity.GooglePlayTabRevealActivity">
         </activity>
+        <activity android:name=".ui.act.viewActivity.CuteSwitchActivity">
+        </activity>
     </application>
 
 </manifest>

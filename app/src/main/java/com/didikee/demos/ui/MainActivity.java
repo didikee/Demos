@@ -20,6 +20,7 @@ import com.didikee.demos.ui.act.MiGuoActivity;
 import com.didikee.demos.ui.act.SanJiaoActivity;
 import com.didikee.demos.ui.act.WebTestActivity;
 import com.didikee.demos.ui.act.YaoYiYaoActivity;
+import com.didikee.demos.ui.act.viewActivity.CuteSwitchActivity;
 import com.didikee.demos.ui.act.viewActivity.GooglePlayTabRevealActivity;
 import com.didikee.demos.ui.act.viewActivity.RevealEffectActivity;
 
@@ -102,6 +103,7 @@ public class MainActivity extends PermissionsHelperActivity {
         models.add(new Pair<String, Class>("GooglePlay 水平滚动 item一半判断", GooglePlayH2RVActivity.class));
         models.add(new Pair<String, Class>("View 揭示动画", RevealEffectActivity.class));
         models.add(new Pair<String, Class>("View 揭示动画-Google Play", GooglePlayTabRevealActivity.class));
+        models.add(new Pair<String, Class>("View CuteSwitch -test", CuteSwitchActivity.class));
 
 
 
