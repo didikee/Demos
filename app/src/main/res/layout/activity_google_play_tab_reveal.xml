@@ -2,21 +2,23 @@
 <LinearLayout
     android:id="@+id/activity_google_play_tab_reveal"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.didikee.demos.ui.act.viewActivity.GooglePlayTabRevealActivity"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="140dp">
+
         <FrameLayout
             android:id="@+id/below"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <View
                 android:id="@+id/act_view"
                 android:layout_width="match_parent"
@@ -25,9 +27,9 @@
 
         <com.didikee.demos.ui.tab.ExtTabLayout
             android:id="@+id/sliding_tabs"
-            android:layout_gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:layout_gravity="bottom"
             app:tabGravity="fill"
             app:tabIndicatorHeight="1dp"
             app:tabMode="fixed"
@@ -36,17 +38,6 @@
 
     </FrameLayout>
 
-    <!--<android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        >
-
-    </android.support.design.widget.AppBarLayout>-->
-
-
-
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
@@ -54,7 +45,4 @@
         android:background="@color/bisque"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         />
-
-
-
 </LinearLayout>

@@ -36,7 +36,7 @@ public class HuaBanRecyclerAdapter extends RecyclerView.Adapter<MyViewHolder>{
     }
     public interface OnItemClickListener{
         void ItemClickListener(View view,int postion);
-        void ItemLongClickListener(View view,int postion);
+        void ItemLongClickListener(View view,int postion,float x,float y);
     }
     public void setOnClickListener(OnItemClickListener listener){
         this.mListener = listener;
@@ -63,12 +63,21 @@ public class HuaBanRecyclerAdapter extends RecyclerView.Adapter<MyViewHolder>{
                     mListener.ItemClickListener(holder.itemView,pos);//把事件交给我们实现的接口那里处理
                 }
             });
-            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+//            ((LongClickLayout)holder.itemView).setOnLongClickListener(new View.OnLongClickListener() {
+//                @Override
+//                public boolean onLongClick(View v) {
+//                    int pos = holder.getLayoutPosition();//得到当前点击item的位置pos
+//                    mListener.ItemLongClickListener(holder.itemView,pos);//把事件交给我们实现的接口那里处理
+//                    return true;
+//                }
+//            });
+            ((LongClickLayout)holder.itemView).setOnLayoutLongClickListener(new LongClickLayout.OnLayoutLongClickListener() {
+
+
                 @Override
-                public boolean onLongClick(View v) {
+                public void onLongClick(View v, float x, float y) {
                     int pos = holder.getLayoutPosition();//得到当前点击item的位置pos
-                    mListener.ItemLongClickListener(holder.itemView,pos);//把事件交给我们实现的接口那里处理
-                    return true;
+                    mListener.ItemLongClickListener(holder.itemView,pos,x,y);//把事件交给我们实现的接口那里处理
                 }
             });
         }

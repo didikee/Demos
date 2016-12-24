@@ -7,7 +7,6 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import com.didikee.uilibs.utils.DisplayUtil;
 
@@ -34,10 +33,10 @@ public class HuaBanPop {
 
         int size = DisplayUtil.dp2px(activity, 100);
         huaBanLayout = new HuaBanLayout(activity);
-        TextView textView=new TextView(activity);
-        textView.setText("ceshi");
-        textView.setTextSize(24);
-        huaBanLayout.addView(textView,size,size);
+//        TextView textView=new TextView(activity);
+//        textView.setText("ceshi");
+//        textView.setTextSize(24);
+//        huaBanLayout.addView(textView,size,size);
         popupWindow = new PopupWindow(huaBanLayout, ViewGroup.LayoutParams
                 .MATCH_PARENT, ViewGroup.LayoutParams
                 .MATCH_PARENT,true);
@@ -67,12 +66,26 @@ public class HuaBanPop {
         });
     }
 
+    public void setLocationForLayout(float x,float y){
+        huaBanLayout.setLocation(x,y);
+    }
+
     public void setOtherMotion(MotionEvent event){
         huaBanLayout.onTouchEvent(event);
     }
 
     public void show(){
         popupWindow.showAtLocation(activity.findViewById(android.R.id.content), Gravity.CENTER,0,0);
+
+
+    }
+
+    private void addActView(){
+//        ImageView imageView=new ImageView(activity);
+//        int actFinger = DisplayUtil.dp2px(activity, 48);
+//        imageView.setImageResource(R.drawable.huaban_shadow);
+//        imageView.setScaleType(ImageView.ScaleType.CENTER);
+//        huaBanLayout.addView(imageView,);
     }
 
 

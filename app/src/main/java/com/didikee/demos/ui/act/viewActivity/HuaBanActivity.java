@@ -55,6 +55,7 @@ public class HuaBanActivity extends AppCompatActivity {
             @Override
             public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
                 if (recyclerView.getWmSHow()){
+                    Log.e("test","item: "+e.getRawX());
                     pop.setOtherMotion(e);
                 }
                 return false;
@@ -77,22 +78,31 @@ public class HuaBanActivity extends AppCompatActivity {
             public void ItemClickListener(View view, int postion) {
                 Toast.makeText(HuaBanActivity.this,"点击了："+postion,Toast.LENGTH_SHORT).show();
             }
+
             @Override
-            public void ItemLongClickListener(View view, int postion) {
-                //长按删除
-//                lists.remove(postion);
-//                adapter.notifyItemRemoved(postion);
-//                recyclerView.getParent().requestDisallowInterceptTouchEvent(true);
-//                helper.show();
-//
+            public void ItemLongClickListener(View view, int postion, float x, float y) {
+                Log.e("test","long: x: "+x+"   y: "+y);
+                pop.setLocationForLayout(x,y);
                 recyclerView.setWmShow(true);
-                recyclerView.requestDisallowInterceptTouchEvent(false);
                 pop.show();
-
-
-//                viewHelper.show();
-//                dialog.show();
             }
+
+//            @Override
+//            public void ItemLongClickListener(View view, int postion) {
+//                //长按删除
+////                lists.remove(postion);
+////                adapter.notifyItemRemoved(postion);
+////                recyclerView.getParent().requestDisallowInterceptTouchEvent(true);
+////                helper.show();
+////
+//                recyclerView.setWmShow(true);
+////                recyclerView.requestDisallowInterceptTouchEvent(false);
+//                pop.show();
+//
+//
+////                viewHelper.show();
+////                dialog.show();
+//            }
         });
 
         helper = new HuaBanHelper(this);
