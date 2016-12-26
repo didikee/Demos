@@ -413,16 +413,4 @@ public class HuaBanLayout extends FrameLayout {
     public void setHuaBanLayoutListener(HuaBanLayoutListener huaBanLayoutListener) {
         this.huaBanLayoutListener = huaBanLayoutListener;
     }
-
-    @Override
-    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-//        Log.e("test","onLayout"+"X: "+startX +"Y: "+startY);
-        super.onLayout(changed, left, top, right, bottom);
-//        View iv = getChildAt(0);
-//        int width = iv.getMeasuredWidth();
-//        int height = iv.getMeasuredHeight();
-//        Log.e("test","width: "+width+"height: "+height);
-//        iv.layout(left+startX-width/2,top+startY-height/2,startX+width/2,startY+height/2);
-//        iv.layout(100,100,width+100,height+100);
-    }
 }
