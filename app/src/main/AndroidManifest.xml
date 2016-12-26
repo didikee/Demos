@@ -48,6 +48,10 @@
         </activity>
         <activity android:name=".ui.act.viewActivity.HuaBanMenuActivity">
         </activity>
+        <activity android:name=".ui.act.viewActivity.SelectorAnimateActivity">
+        </activity>
+        <activity android:name=".ui.act.viewActivity.NormalStagleRVActivity">
+        </activity>
     </application>
 
 </manifest>

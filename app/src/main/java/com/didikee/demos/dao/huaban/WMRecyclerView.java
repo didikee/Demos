@@ -18,6 +18,7 @@ public class WMRecyclerView extends RecyclerView{
     private boolean isWmShow=false;
     private OnPopShow popShowListener;
 
+
     public WMRecyclerView(Context context) {
         super(context);
     }
@@ -40,15 +41,40 @@ public class WMRecyclerView extends RecyclerView{
 
     @Override
     public boolean onTouchEvent(MotionEvent e) {
+//        Log.e("re","re: "+e.getAction());
         if (isWmShow){
-            Log.e("test","true: "+e.getAction());
+//            Log.e("test","true: "+e.getAction());
             if (popShowListener!=null){
                 popShowListener.giveYouMyMotion(e);
             }
+            Log.e("re","re-no-no: "+e.getAction());
             return true;
         }else {
+            Log.e("re","re: "+e.getAction());
             return super.onTouchEvent(e);
         }
+
+//        switch (e.getAction()){
+//            case MotionEvent.ACTION_DOWN:
+//                return super.onTouchEvent(e);
+//            case MotionEvent.ACTION_MOVE:
+//                if (isWmShow){
+//                    if (popShowListener!=null){
+//                        popShowListener.giveYouMyMotion(e);
+//                    }
+//                    Log.e("re","re-no-no: "+e.getAction());
+//                    return true;
+//                }else {
+//                    Log.e("re","re: "+e.getAction());
+//                    return super.onTouchEvent(e);
+//                }
+//            case MotionEvent.ACTION_CANCEL:
+//                return super.onTouchEvent(e);
+//            case MotionEvent.ACTION_UP:
+//                return super.onTouchEvent(e);
+//            default:
+//                return super.onTouchEvent(e);
+//        }
     }
 
     public interface OnPopShow{
@@ -58,4 +84,15 @@ public class WMRecyclerView extends RecyclerView{
     public void setOnPopShowListener(OnPopShow popShowListener){
         this.popShowListener=popShowListener;
     }
+
+    @Override
+    public boolean fling(int velocityX, int velocityY) {
+        if (isWmShow){
+            return false;
+        }else {
+            return super.fling(velocityX,velocityY);
+        }
+    }
+
+
 }

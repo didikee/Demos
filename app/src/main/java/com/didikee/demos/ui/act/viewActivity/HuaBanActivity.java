@@ -20,6 +20,7 @@ import com.didikee.demos.dao.huaban.HuaBanRecyclerAdapter;
 import com.didikee.demos.dao.huaban.HuaBanViewHelper;
 import com.didikee.demos.dao.huaban.WMRecyclerView;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class HuaBanActivity extends AppCompatActivity {
     private HuaBanPop pop;
     private HuaBanViewHelper viewHelper;
     private HuaBanDialog dialog;
-
+    private MotionEvent actionDown;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +41,14 @@ public class HuaBanActivity extends AppCompatActivity {
         setBarStyle();
         initData();
         recyclerView = ((WMRecyclerView) findViewById(R.id.rv));
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,
+                StaggeredGridLayoutManager.VERTICAL){
+            @Override
+            public boolean canScrollVertically() {
+                return super.canScrollVertically();
+            }
+        };
+        recyclerView.setLayoutManager(staggeredGridLayoutManager);
         recyclerView.addItemDecoration(new HuaBanDivier(this));
         adapter = new HuaBanRecyclerAdapter(this,lists);
         recyclerView.setAdapter(adapter);
@@ -80,11 +88,18 @@ public class HuaBanActivity extends AppCompatActivity {
             }
 
             @Override
-            public void ItemLongClickListener(View view, int postion, float x, float y) {
+            public void ItemLongClickListener(final View view, int postion, float x, float y, MotionEvent actionDownForRV) {
                 Log.e("test","long: x: "+x+"   y: "+y);
+                actionDown=actionDownForRV;
                 pop.setLocationForLayout(x,y);
                 recyclerView.setWmShow(true);
                 pop.show();
+//                pop.setActionUpListener(new HuaBanPop.ActionUpListener() {
+//                    @Override
+//                    public void actionUp(MotionEvent event) {
+//                        view.onTouchEvent(event);
+//                    }
+//                });
             }
 
 //            @Override
@@ -113,6 +128,10 @@ public class HuaBanActivity extends AppCompatActivity {
             @Override
             public void onDismiss() {
                 recyclerView.setWmShow(false);
+                restRVScroll();
+//                recyclerView.requestDisallowInterceptTouchEvent(true);
+//                recyclerView.onTouchEvent(actionDown);
+//                    recyclerView.stopNestedScroll();
             }
         });
 
@@ -123,6 +142,19 @@ public class HuaBanActivity extends AppCompatActivity {
 //            }
 //        },1000);
 
+    }
+
+    private void restRVScroll(){
+        Class<?> clz = RecyclerView.class;
+        try {
+            Method resetTouch = clz.getDeclaredMethod("resetTouch");
+            resetTouch.setAccessible(true);
+            resetTouch.invoke(clz.newInstance());
+            Log.e("test","执行了");
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e("test","执行了....");
+        }
     }
 
     private void initData() {

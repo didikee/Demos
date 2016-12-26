@@ -23,7 +23,9 @@ import com.didikee.demos.ui.act.YaoYiYaoActivity;
 import com.didikee.demos.ui.act.viewActivity.CuteSwitchActivity;
 import com.didikee.demos.ui.act.viewActivity.GooglePlayTabRevealActivity;
 import com.didikee.demos.ui.act.viewActivity.HuaBanActivity;
+import com.didikee.demos.ui.act.viewActivity.NormalStagleRVActivity;
 import com.didikee.demos.ui.act.viewActivity.RevealEffectActivity;
+import com.didikee.demos.ui.act.viewActivity.SelectorAnimateActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,6 +108,8 @@ public class MainActivity extends PermissionsHelperActivity {
         models.add(new Pair<String, Class>("View 揭示动画-Google Play", GooglePlayTabRevealActivity.class));
         models.add(new Pair<String, Class>("View CuteSwitch -test", CuteSwitchActivity.class));
         models.add(new Pair<String, Class>("View HuaBan -test", HuaBanActivity.class));
+        models.add(new Pair<String, Class>("View SelectorAnimate -test", SelectorAnimateActivity.class));
+        models.add(new Pair<String, Class>("View NormalStagleRVActivity -test", NormalStagleRVActivity.class));
 
 
 
