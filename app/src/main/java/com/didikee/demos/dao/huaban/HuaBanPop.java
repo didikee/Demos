@@ -21,7 +21,6 @@ public class HuaBanPop {
     private PopupWindow popupWindow;
     private PopListener popListener;
     private HuaBanLayout huaBanLayout;
-    private ActionUpListener actionUpListener;
 
     public HuaBanPop(Activity activity) {
         this.activity = activity;
@@ -58,12 +57,9 @@ public class HuaBanPop {
 
         huaBanLayout.setHuaBanLayoutListener(new HuaBanLayout.HuaBanLayoutListener() {
             @Override
-            public void onFingerUp(MotionEvent e) {
+            public void onFingerUp() {
                 if (popListener!=null){
                     popListener.onDismiss();
-                }
-                if (actionUpListener!=null){
-                    actionUpListener.actionUp(e);
                 }
                 popupWindow.dismiss();
             }
@@ -82,22 +78,6 @@ public class HuaBanPop {
         popupWindow.showAtLocation(activity.findViewById(android.R.id.content), Gravity.CENTER,0,0);
 
 
-    }
-
-    private void addActView(){
-//        ImageView imageView=new ImageView(activity);
-//        int actFinger = DisplayUtil.dp2px(activity, 48);
-//        imageView.setImageResource(R.drawable.huaban_shadow);
-//        imageView.setScaleType(ImageView.ScaleType.CENTER);
-//        huaBanLayout.addView(imageView,);
-    }
-
-    public void setActionUpListener(ActionUpListener actionUpListener) {
-        this.actionUpListener=actionUpListener;
-    }
-
-    public interface ActionUpListener{
-        void actionUp(MotionEvent event);
     }
 
     public interface PopListener{

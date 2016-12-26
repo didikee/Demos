@@ -129,19 +129,8 @@ public class HuaBanActivity extends AppCompatActivity {
             public void onDismiss() {
                 recyclerView.setWmShow(false);
                 restRVScroll();
-//                recyclerView.requestDisallowInterceptTouchEvent(true);
-//                recyclerView.onTouchEvent(actionDown);
-//                    recyclerView.stopNestedScroll();
             }
         });
-
-//        recyclerView.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                dialog = new HuaBanDialog(HuaBanActivity.this);
-//            }
-//        },1000);
-
     }
 
     private void restRVScroll(){
@@ -149,11 +138,10 @@ public class HuaBanActivity extends AppCompatActivity {
         try {
             Method resetTouch = clz.getDeclaredMethod("resetTouch");
             resetTouch.setAccessible(true);
-            resetTouch.invoke(clz.newInstance());
-            Log.e("test","执行了");
+            resetTouch.invoke(recyclerView);
         } catch (Exception e) {
             e.printStackTrace();
-            Log.e("test","执行了....");
+            Log.e("test","执行失败!");
         }
     }
 
