@@ -25,6 +25,7 @@ import com.didikee.demos.ui.act.viewActivity.GooglePlayTabRevealActivity;
 import com.didikee.demos.ui.act.viewActivity.HuaBanActivity;
 import com.didikee.demos.ui.act.viewActivity.NormalStagleRVActivity;
 import com.didikee.demos.ui.act.viewActivity.RevealEffectActivity;
+import com.didikee.demos.ui.act.viewActivity.RippleJavaActivity;
 import com.didikee.demos.ui.act.viewActivity.SelectorAnimateActivity;
 
 import java.util.ArrayList;
@@ -97,6 +98,7 @@ public class MainActivity extends PermissionsHelperActivity {
     private void init() {
 
         models.add(new Pair<String, Class>("DownLoad", DownLoadActivity.class));
+        models.add(new Pair<String, Class>("Ripple Java", RippleJavaActivity.class));
         models.add(new Pair<String, Class>("文件目录", AndroidFilePathActivity.class));
         models.add(new Pair<String, Class>("摇一摇xyz轴最大值测试", YaoYiYaoActivity.class));
         models.add(new Pair<String, Class>("文件选择", FileChooserActivity.class));

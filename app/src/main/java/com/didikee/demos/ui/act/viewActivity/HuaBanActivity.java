@@ -2,6 +2,7 @@ package com.didikee.demos.ui.act.viewActivity;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -33,7 +34,6 @@ public class HuaBanActivity extends AppCompatActivity {
     private HuaBanPop pop;
     private HuaBanViewHelper viewHelper;
     private HuaBanDialog dialog;
-    private MotionEvent actionDown;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,47 +88,35 @@ public class HuaBanActivity extends AppCompatActivity {
             }
 
             @Override
-            public void ItemLongClickListener(final View view, int postion, float x, float y, MotionEvent actionDownForRV) {
+            public void ItemLongClickListener(final View view, int postion, float x, float y) {
                 Log.e("test","long: x: "+x+"   y: "+y);
-                actionDown=actionDownForRV;
                 pop.setLocationForLayout(x,y);
-                recyclerView.setWmShow(true);
+
+//                HuaBanActivity.this.setFinishOnTouchOutside();
                 pop.show();
-//                pop.setActionUpListener(new HuaBanPop.ActionUpListener() {
-//                    @Override
-//                    public void actionUp(MotionEvent event) {
-//                        view.onTouchEvent(event);
-//                    }
-//                });
+                recyclerView.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), MotionEvent.ACTION_CANCEL, 0, 0, 0));
+//                recyclerView.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), MotionEvent.ACTION_UP, 0, 0, 0));
+
+//                pop.setOtherMotion(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), MotionEvent.ACTION_DOWN, x, y, 0));
+
+//                recyclerView.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), MotionEvent.ACTION_CANCEL, 0, 0, 0));
+//                recyclerView.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), MotionEvent.ACTION_UP, x, y, 0));
+
+//                pop.setOtherMotion(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), MotionEvent.ACTION_DOWN, x, y, 0));
+//                recyclerView.setWmShow(true);
+
             }
 
-//            @Override
-//            public void ItemLongClickListener(View view, int postion) {
-//                //长按删除
-////                lists.remove(postion);
-////                adapter.notifyItemRemoved(postion);
-////                recyclerView.getParent().requestDisallowInterceptTouchEvent(true);
-////                helper.show();
-////
-//                recyclerView.setWmShow(true);
-////                recyclerView.requestDisallowInterceptTouchEvent(false);
-//                pop.show();
-//
-//
-////                viewHelper.show();
-////                dialog.show();
-//            }
         });
 
-        helper = new HuaBanHelper(this);
         pop = new HuaBanPop(this);
-        viewHelper = new HuaBanViewHelper(this);
 
         pop.setPopListener(new HuaBanPop.PopListener() {
             @Override
             public void onDismiss() {
                 recyclerView.setWmShow(false);
-                restRVScroll();
+                recyclerView.setFocusable(true);
+//                restRVScroll();
             }
         });
     }
@@ -156,11 +144,5 @@ public class HuaBanActivity extends AppCompatActivity {
             // 设置状态栏透明
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        Log.e("test","activity: "+event.getAction());
-        return super.onTouchEvent(event);
     }
 }

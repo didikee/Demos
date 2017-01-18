@@ -37,7 +37,7 @@ public class HuaBanRecyclerAdapter extends RecyclerView.Adapter<MyViewHolder>{
     }
     public interface OnItemClickListener{
         void ItemClickListener(View view,int postion);
-        void ItemLongClickListener(View view,int postion,float x,float y, MotionEvent actionDownForRV);
+        void ItemLongClickListener(View view,int postion,float x,float y);
     }
     public void setOnClickListener(OnItemClickListener listener){
         this.mListener = listener;
@@ -76,9 +76,9 @@ public class HuaBanRecyclerAdapter extends RecyclerView.Adapter<MyViewHolder>{
 
 
                 @Override
-                public void onLongClick(View v, float x, float y, MotionEvent actionDownForRV) {
+                public void onLongClick(View v, float x, float y) {
                     int pos = holder.getLayoutPosition();//得到当前点击item的位置pos
-                    mListener.ItemLongClickListener(holder.itemView,pos,x,y,actionDownForRV);//把事件交给我们实现的接口那里处理
+                    mListener.ItemLongClickListener(holder.itemView,pos,x,y);//把事件交给我们实现的接口那里处理
                 }
 
 //                @Override

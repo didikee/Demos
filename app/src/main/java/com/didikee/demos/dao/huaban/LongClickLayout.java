@@ -17,7 +17,6 @@ public class LongClickLayout extends FrameLayout {
 
     private float longClickX;
     private float longClickY;
-    private MotionEvent actionDown;
     private OnLayoutLongClickListener layoutLongClickListener;
 
     public LongClickLayout(Context context) {
@@ -33,8 +32,9 @@ public class LongClickLayout extends FrameLayout {
         this.setOnLongClickListener(new OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                if (layoutLongClickListener!=null)layoutLongClickListener.onLongClick(v,longClickX,longClickY,actionDown);
-//                LongClickLayout.this.setPressed(false);
+                if (layoutLongClickListener!=null)layoutLongClickListener.onLongClick(v,longClickX,longClickY);
+//                dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), MotionEvent.ACTION_CANCEL, 0, 0, 0));
+//                dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), MotionEvent.ACTION_UP, 0, 0, 0));
                 return true;
             }
         });
@@ -43,16 +43,16 @@ public class LongClickLayout extends FrameLayout {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         Log.e("testlong","event: "+event.getAction());
-        if (event.getAction()==MotionEvent.ACTION_DOWN){
-            actionDown=event;
-        }
+//        if (event.getAction()==MotionEvent.ACTION_DOWN){
+//            actionDown=event;
+//        }
         longClickX=event.getRawX();
         longClickY=event.getRawY();
         return super.onTouchEvent(event);
     }
 
     public interface OnLayoutLongClickListener{
-        void onLongClick(View v,float x,float y,MotionEvent actionDownForRV);
+        void onLongClick(View v,float x,float y);
     }
 
     public void setOnLayoutLongClickListener(OnLayoutLongClickListener layoutLongClickListener){

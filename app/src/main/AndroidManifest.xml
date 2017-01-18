@@ -52,6 +52,8 @@
         </activity>
         <activity android:name=".ui.act.viewActivity.NormalStagleRVActivity">
         </activity>
+        <activity android:name=".ui.act.viewActivity.RippleJavaActivity">
+        </activity>
     </application>
 
 </manifest>
